@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="九日集训第二天, Hexo">
+    <meta name="keywords" content="九日集训第三天, Hexo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>九日集训第二天 | Hexo</title>
+    <title>九日集训第三天 | Hexo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">九日集训第二天</h1>
+                    <h1 class="description center-align post-title">九日集训第三天</h1>
                 </div>
             </div>
         </div>
@@ -466,41 +466,53 @@
             <div id="articleContent">
                 <span id="more"></span>
 
-<p>英雄老师的代码珠玉在前，九日集训的解题报告基本就是把教程用自己的话重新写一遍罢了，但这是有意义的，从模仿开始。</p>
-<h2 id="1、2的幂"><a href="#1、2的幂" class="headerlink" title="1、2的幂"></a>1、2的幂</h2><ul>
-<li>1、如何判断一个数n是否是2的幂呢？仅仅说是否有2的幂等于n来判断是可行的，但不完整。还需要先对n进行分类讨论：<br>
-n$\leq$0时，不可能为任何数的幂
-<br>
-n=1时，为$2^0$</li>
-<li>2、在枚举2的幂的时候，循环条件需要注意32整型数的范围，要小于$2^{31}$。</li>
-<li>3、对于函数体来说，执行了return就算是完成了函数的调用了，类似于循环中的break。</li>
+<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><h2 id="1、数组的查找"><a href="#1、数组的查找" class="headerlink" title="1、数组的查找"></a>1、数组的查找</h2><ul>
+<li>记住数组遍历的常用格式<code>for(i = 0; i &lt; numsSize; i++)</code>(i++和++i可以替换，问题不大)</li>
 </ul>
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;所以为什么k的类型是无符号整型呢？<br>因为如果k是int类型，则在执行2的累乘会报错：</p>
-<blockquote>
-<p>Char 11: runtime error: signed integer overflow: 1073741824 * 2 cannot be represented in type ‘int’ [solution.c]</p>
-</blockquote>
-<p>也就是会溢出，所以无符号整型是必要的。</p>
-<h2 id="2、3的幂"><a href="#2、3的幂" class="headerlink" title="2、3的幂"></a>2、3的幂</h2><ul>
-<li>对于3来说，枚举上限是$3^{20}$</li>
+<h2 id="2、数组的最小值"><a href="#2、数组的最小值" class="headerlink" title="2、数组的最小值"></a>2、数组的最小值</h2><ul>
+<li>题目一开始就能确定思路，遍历数组并设定一个变量，每当当前元素小于这个变量值的时候就更新变量的值。但是我疏忽的一点是没有把变量的初始值设为10000，而是想当然地设为0，这是有重大疏漏的。</li>
 </ul>
-<h2 id="3、4的幂"><a href="#3、4的幂" class="headerlink" title="3、4的幂"></a>3、4的幂</h2><ul>
-<li>4的枚举上限是$4^{15}$</li>
+<h2 id="3、斐波那契数列"><a href="#3、斐波那契数列" class="headerlink" title="3、斐波那契数列"></a>3、斐波那契数列</h2><ul>
+<li>1、在走楼梯之前要明确一点，起点在第0阶而非第1阶。这一点可能会因为数组的下标设置而想当然以为f[0]是第1阶。明确这一点之后，就可以直到数组的下标与台阶数正好一一对应。</li>
+<li>2、第0阶（也就是还没走上第1阶的起点）和第1阶的走法都是1。从第2阶开始，每一阶都有爬1和爬2两种选择。2阶往后的任意n阶，都可以从n-1或者n-2阶爬过来，n-1则从(n-1)-1或(n-1)-2阶爬过来……以此类推，爬到第n阶的方案数就可以利用数组遍历从后往前推算。也即斐波那契数列。</li>
+<li>3、所以说，f[n]代表的就是爬到第n层的方法数。因此在遍历数组的for循环中，循环条件表达式用的不是常用的<code>&lt;</code>而是<code>&lt;=</code>。</li>
+<li>问题：为什么第0阶的爬法是1呢？难道不该是0吗？</li>
 </ul>
-<h2 id="4、n的第k个因子"><a href="#4、n的第k个因子" class="headerlink" title="4、n的第k个因子"></a>4、n的第k个因子</h2><ul>
-<li>枚举正整数n的因数，范围肯定是在[1~n]中。</li>
+<h2 id="4、绝对值为k的数对"><a href="#4、绝对值为k的数对" class="headerlink" title="4、绝对值为k的数对"></a>4、绝对值为k的数对</h2><ul>
+<li>1、注意i&lt;j，所以枚举的时候j的初始值为<code>i + 1</code>。（一般循环嵌套遍历数组的时候都是类似的）。虽然说内部的循环也可以从下标0开始，但是由于是同一个数组，而且比较条件是差的绝对值，所以那样就会有重复，因此<code>j</code>从<code>i + 1</code>开始。</li>
+<li>2、abs函数返回绝对值。所以不需要用与式来表达绝对值了。</li>
 </ul>
-<h2 id="5、有效的完全平方数"><a href="#5、有效的完全平方数" class="headerlink" title="5、有效的完全平方数"></a>5、有效的完全平方数</h2><h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><ul>
-<li>1、枚举平方的时候可以省略循环条件，但是需要用<code>(long long)</code>的类型转换防止32整型溢出。如果不进行类型转换，而是将int类型的i直接平方进行比较，那么提交会报错：<blockquote>
-<p>Char 14: runtime error: signed integer overflow: 46341 * 46341 cannot be represented in type ‘int’ [solution.c]</p>
-</blockquote>
-</li>
+<h2 id="5、猜数字"><a href="#5、猜数字" class="headerlink" title="5、猜数字"></a>5、猜数字</h2><h3 id="错误做法"><a href="#错误做法" class="headerlink" title="错误做法"></a>错误做法</h3><ul>
+<li>我一开始用的是循环嵌套，guess和answer数组都从下标为0，即从头到尾比较一次。但这种解法的问题是游戏的次数不止3次，而且每个元素不止比较了一次。<br><br>究其原因，其实是因为想在代码中实现文中的“随机选择”从而采用嵌套循环。那这样的话还有一个问题，就是循环出来的结果必定为3，因为每个元素都彼此比较过了，所以相同的次数最多只能为3。</li>
 </ul>
-<p>跟2的幂题目中无符号整型的k类似。</p>
+<h3 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h3><ul>
+<li>1、文中的“随机选择”应该已经在数组元素中实现了，所以实现算法只需要将数组中的对应元素进行判断即可。</li>
+<li>2、判断语句既可以用if语句，也可以试试三目运算符。</li>
+</ul>
+<h2 id="6、拿硬币"><a href="#6、拿硬币" class="headerlink" title="6、拿硬币"></a>6、拿硬币</h2><h3 id="思路分析-1"><a href="#思路分析-1" class="headerlink" title="思路分析"></a>思路分析</h3><p>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;既然是说最少次数，那么肯定是尽量一次拿两枚。那这就要讨论每堆硬币数是奇数还是偶数，粗略一考虑，根据除法向下取整的特性，如果某一堆的硬币是偶数，那么拿走这一堆硬币的最少次数就是硬币数除以2；如果硬币是奇数，那最少次数就是硬币数加1再除以2。<br><br>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;之所以说粗略思考，是因为不需要分开讨论奇偶。根据除法向下取整的特性，不论偶数还是奇数，加1之后除以2正好都为最少次数，也就是答案代码的逻辑。</p>
+<h1 id="课后习题"><a href="#课后习题" class="headerlink" title="课后习题"></a>课后习题</h1><h2 id="33、搜索旋转排序数组"><a href="#33、搜索旋转排序数组" class="headerlink" title="33、搜索旋转排序数组"></a>33、搜索旋转排序数组</h2><h3 id="思路分析-2"><a href="#思路分析-2" class="headerlink" title="思路分析"></a>思路分析</h3><p>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;如果忽略时间复杂度的要求，其实这题就是一个简单的数组遍历。目前笔者的水平考虑不了时间复杂度，所以这次暂且过关，留待之后重做。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">search</span><span class="params">(<span class="type">int</span>* nums, <span class="type">int</span> numsSize, <span class="type">int</span> target)</span>&#123;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; numsSize; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums[i] == target)&#123;</span><br><span class="line">            <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>要注意的一点是，leetcode的数组传参是把<code>*</code>紧挨在<code>int</code>后面，而《九日集训》第三天的讲义中则是<code>*</code>紧挨着数组名，也就是这里的<code>nums</code>。猜想这两种方式应该都是可行的。<br>（破案了，在leetcode中把<code>int* nums</code>改成<code>int *nums</code>提交依然可以通过，而且耗时居然从4ms减少到了0ms，有意思~）</p>
+<h2 id="81、搜索旋转排序数组Ⅱ"><a href="#81、搜索旋转排序数组Ⅱ" class="headerlink" title="81、搜索旋转排序数组Ⅱ"></a>81、搜索旋转排序数组Ⅱ</h2><p>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;忽略时间复杂度的要求，那么这一题跟上一题的唯一区别就在于这一题里函数的返回值是布尔值，也即<code>true</code>和<code>false</code>。</p>
+<h2 id="153、寻找旋转排序数组中的最小值"><a href="#153、寻找旋转排序数组中的最小值" class="headerlink" title="153、寻找旋转排序数组中的最小值"></a>153、寻找旋转排序数组中的最小值</h2><h3 id="思路分析-3"><a href="#思路分析-3" class="headerlink" title="思路分析"></a>思路分析</h3><p>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;如果忽略时间复杂度，那么本题就变成了遍历数组寻找最小值的算法。</p>
+<h2 id="509、斐波那契数"><a href="#509、斐波那契数" class="headerlink" title="509、斐波那契数"></a>509、斐波那契数</h2><h3 id="思路分析-4"><a href="#思路分析-4" class="headerlink" title="思路分析"></a>思路分析</h3><p>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;简单的斐波那契数。需要注意以下几点：</p>
 <ul>
-<li>2、循环里的return可以类比break，只要满足条件，马上返回函数值，循环自己也就跳出来了。</li>
-<li>最后在for循环之外的return理论上是不会跑到这里的，仅作保底，可以省略。</li>
+<li>1、注意<code>i</code>是从2开始的。</li>
+<li>2、如果把斐波那契数叶也视作数组的话，那么最后一位为第n位的斐波那契数组，其长度应该为n+1。所以这里的<code>for</code>循环里<code>i</code>的最后一位是<code>n</code>而非<code>n-1</code>。</li>
+<li>3、LeetCode里定义数组的时候如果数组长度留空是会报错的，也就是说在LeetCode里定义数组就必须要确定数组长度。</li>
 </ul>
-<p><br>完稿：2023&#x2F;3&#x2F;21周二</p>
+<h2 id="1137、第N个泰波那契数"><a href="#1137、第N个泰波那契数" class="headerlink" title="1137、第N个泰波那契数"></a>1137、第N个泰波那契数</h2><h3 id="思路分析-5"><a href="#思路分析-5" class="headerlink" title="思路分析"></a>思路分析</h3><p>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;与斐波那契的区别就是泰波那契数是加前三个。</p>
+<h2 id="2006、差的绝对值为K的数对数目"><a href="#2006、差的绝对值为K的数对数目" class="headerlink" title="2006、差的绝对值为K的数对数目"></a>2006、差的绝对值为K的数对数目</h2><h3 id="思路分析-6"><a href="#思路分析-6" class="headerlink" title="思路分析"></a>思路分析</h3><p>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;与例题《绝对值为K的数对》不能说非常相似吧……只能说是一模一样。</p>
+<h2 id="LCP-01-猜数字"><a href="#LCP-01-猜数字" class="headerlink" title="LCP 01.猜数字"></a>LCP 01.猜数字</h2><h3 id="思路分析-7"><a href="#思路分析-7" class="headerlink" title="思路分析"></a>思路分析</h3><p>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;跟例题《猜数字》一样。</p>
+<h2 id="LCP-06-拿硬币"><a href="#LCP-06-拿硬币" class="headerlink" title="LCP 06.拿硬币"></a>LCP 06.拿硬币</h2><h3 id="思路分析-8"><a href="#思路分析-8" class="headerlink" title="思路分析"></a>思路分析</h3><p>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;同例题《拿硬币》</p>
+<h2 id="剑指Offer-Ⅱ-069-山峰数组的顶部"><a href="#剑指Offer-Ⅱ-069-山峰数组的顶部" class="headerlink" title="剑指Offer Ⅱ 069. 山峰数组的顶部"></a>剑指Offer Ⅱ 069. 山峰数组的顶部</h2><h3 id="思路分析-9"><a href="#思路分析-9" class="headerlink" title="思路分析"></a>思路分析</h3><p>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;初步分析，这一题无非就是从遍历数组找最小值变成了遍历数组找最大值。但是还有一点不同在于，这一题要返回的不是最大值而是最大值的下标。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="title function_">peakIndexInMountainArray</span><span class="params">(<span class="type">int</span>* arr, <span class="type">int</span> arrSize)</span>&#123;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="type">int</span> peak;                 <span class="comment">// (1)</span></span><br><span class="line">    <span class="type">int</span> max;                  <span class="comment">// (2)</span></span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>, max = arr[<span class="number">0</span>]; i &lt; arrSize; i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(arr[i] &gt;  max)&#123;    <span class="comment">// (3)</span></span><br><span class="line">            max = arr[i];</span><br><span class="line">            peak = i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> peak;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>(1) 定义峰顶peak，即全局最大值对应的下标</li>
+<li>(2) 定义峰值，即全局最大值</li>
+<li>(3) 遍历数组，如果数组元素<code>arr[i]</code>比全局最大值大，则更新全局最大值和对应下标</li>
+</ul>
+<p>完稿：2023.3.23周四</p>
 
                 
             </div>
@@ -527,7 +539,7 @@ n=1时，为$2^0$</li>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://half-star.github.io/2023/03/24/%E4%B9%9D%E6%97%A5%E9%9B%86%E8%AE%AD%E7%AC%AC%E4%BA%8C%E5%A4%A9/">http://half-star.github.io/2023/03/24/%E4%B9%9D%E6%97%A5%E9%9B%86%E8%AE%AD%E7%AC%AC%E4%BA%8C%E5%A4%A9/</a>
+                    <a href="http://half-star.github.io/2023/03/24/%E4%B9%9D%E6%97%A5%E9%9B%86%E8%AE%AD%E7%AC%AC%E4%B8%89%E5%A4%A9/">http://half-star.github.io/2023/03/24/%E4%B9%9D%E6%97%A5%E9%9B%86%E8%AE%AD%E7%AC%AC%E4%B8%89%E5%A4%A9/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -732,9 +744,10 @@ n=1时，为$2^0$</li>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2023/03/24/%E4%B9%9D%E6%97%A5%E9%9B%86%E8%AE%AD%E7%AC%AC%E4%B8%89%E5%A4%A9/">
                     <div class="card-image">
@@ -752,9 +765,9 @@ n=1时，为$2^0$</li>
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-03-24
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -763,6 +776,7 @@ n=1时，为$2^0$</li>
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -773,13 +787,13 @@ n=1时，为$2^0$</li>
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/10/19/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/">
+                <a href="/2023/03/24/%E4%B9%9D%E6%97%A5%E9%9B%86%E8%AE%AD%E7%AC%AC%E4%BA%8C%E5%A4%A9/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="第一篇文章 三万的">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="九日集训第二天">
                         
-                        <span class="card-title">第一篇文章 三万的</span>
+                        <span class="card-title">九日集训第二天</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -790,7 +804,7 @@ n=1时，为$2^0$</li>
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-03-24
                             </span>
                         <span class="publish-author">
                             
