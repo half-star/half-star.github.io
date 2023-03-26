@@ -466,7 +466,7 @@
             <div id="articleContent">
                 <span id="more"></span>
 
-<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><h2 id="1、-重新排列数组"><a href="#1、-重新排列数组" class="headerlink" title="1、 重新排列数组"></a>1、 重新排列数组</h2><h3 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h3><p><br>&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;这一题要关注的点如下：</p>
+<h1 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h1><h2 id="1、-重新排列数组"><a href="#1、-重新排列数组" class="headerlink" title="1、 重新排列数组"></a>1、 重新排列数组</h2><h3 id="思路分析"><a href="#思路分析" class="headerlink" title="思路分析"></a>思路分析</h3><p><br>&amp;#160;&amp;#160;&amp;#160;&amp;#160;这一题要关注的点如下：</p>
 <ul>
 <li>1、函数内申请的数组<code>ret</code>是跟传入函数的数组<code>nums</code>不同的。如果误以为两者是同一个数组，那么就无从下手；</li>
 <li>2、数组排列的方法，关键在于弄清楚同一个元素在排列前后的两个下标之间有什么关系。<br><br>&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;&amp;#160;<code>x</code>的下标在排列之前原本为<code>0~n-1</code>，排列之后它从下标0开始隔项放入，对应的新下标都是偶数；<code>y</code>的原下标则是<code>n~2n-1</code>，排列之后它从下标1开始隔项放入，对应的新下彪都是奇数。联系各元素的原下标与新下标，可以得到下列关系：<ul>
